@@ -1,8 +1,18 @@
 # Getting Started with RATIOC Client App
 
+## Prerequites
+
+Install the following tools
+
+- Setup [Node JS & NPM](https://nodejs.org/en/download/)
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Install and setup the project library
 
 ### `npm start`
 
