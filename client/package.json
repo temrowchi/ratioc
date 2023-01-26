@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --config .prettierrc 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' --write",
     "checkFormat": "prettier --config .prettierrc 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' --check",
-    "prepare": "husky install"
+    "postinstall": "husky install"
   },
   "eslintConfig": {
     "extends": [
