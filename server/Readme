@@ -1,0 +1,16 @@
+- Install Node
+- verify you have node and npm by: 
+    node -v
+    npm -v
+- Install Brew
+- Install postgresql (optional):
+    - brew install postgresql
+    - Start postgresql:
+        - brew services start postgresql
+- Install node module (express):
+    - npm i -s express
+- Install node module (postgresql):
+    - npm i express pg
+- Start application:
+    - npm start
+
