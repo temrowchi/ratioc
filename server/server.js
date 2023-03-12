@@ -1,18 +1,29 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const routes = require('./routes/user');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-const port = 3000; 
+require('./routes/auth')(app);
+require('./routes/user')(app);
 
-app.use('/', routes) //Use router
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-)
+const PORT = process.env.PORT || 8080;
 
-app.listen(port, () => {
-    console.log(`Now listening on port ${port}`); 
+const db = require("./models");
+db.sequelize.sync(); 
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Test API
+app.get("/", (req, res) => {
+    res.json({ message: "Ratio-c Server is Up and running." });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });

@@ -1,17 +1,22 @@
 {
   "name": "ratioc-server",
   "version": "1.0.0",
-  "description": "initial ratioc server",
+  "description": "Server for ratio-c application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rowland",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "pg": "^8.8.0"
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.29.3"
   }
 }

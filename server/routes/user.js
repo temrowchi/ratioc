@@ -1,14 +1,20 @@
-const express = require('express');
-const db = require('../queries')
+const { auth } = require("../middleware");
+const controller = require("../controllers/user");
 
-const router  = express.Router(); 
-const userController = require('../controllers/user'); 
+module.exports = function(app) {
+    app.use(function(req, res, next) {
+        res.header(
+            "Access-Control-Allow-Headers",
+            "x-access-token, Origin, Content-Type, Accept"
+        );
+        next();
+    });
 
-//To do: Call below via userController and via query.
-router.get('/user/:id', db.getUserById)
-router.get('/user', db.getUsers)
-router.post('/user', db.createUser)
-router.put('/user/:id', db.updateUser)
-router.delete('/user/:id', db.deleteUser)
+    app.get("/api/test/all", controller.allAccess);
 
-module.exports = router; 
+    app.get(
+        "/api/test/user",
+        [auth.verifyToken],
+        controller.userBoard
+    );
+};
