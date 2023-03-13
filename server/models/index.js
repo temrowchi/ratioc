@@ -8,8 +8,7 @@ const sequelize = new Sequelize(
   {
     host: config.HOST,
     dialect: config.dialect,
-    operatorsAliases: false,
-
+    logging: false, // When true will log all database changes/sync/table creation/ being done on start up
     pool: {
       max: config.pool.max,
       min: config.pool.min,
