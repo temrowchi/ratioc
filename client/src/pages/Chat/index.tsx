@@ -7,8 +7,6 @@ import {User} from '../../model';
 
 const Chat = () => {
   const [users, setUsers] = useState(userList);
-  const [showList, setShowList] = useState(true);
-  const [showChatBox, setShowChatBox] = useState(true);
   const [userChatData, setUserChatData] = useState<User | undefined>();
 
   const onChatClicked = (user: User) => {
