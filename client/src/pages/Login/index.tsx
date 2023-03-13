@@ -8,15 +8,19 @@ import {
   MDBTabsPane,
   MDBBtn,
   MDBInput,
-  MDBCard
+  MDBCard,
+  MDBSpinner
 } from 'mdb-react-ui-kit';
 import './Login.css';
 import {useNavigate} from 'react-router-dom';
+import {LoadingModal} from '../../components';
 
 const Login = () => {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [justifyActive, setJustifyActive] = useState('signIn');
   const navigate = useNavigate();
 
@@ -35,7 +39,7 @@ const Login = () => {
   };
 
   const handleSignUp = (e: any) => {
-    if (!name || !email || !password) {
+    if (!firstName || !lastName || !email || !password) {
       e.preventDefault();
     }
     navigate('/chat');
@@ -81,7 +85,10 @@ const Login = () => {
                 onChange={(event) => setPassword(event.target.value)}
               />
 
-              <MDBBtn className="mb-4 w-100">{'Sign in'}</MDBBtn>
+              <MDBBtn className="mb-4 w-100">
+                {loading && <MDBSpinner size="sm" role="status" tag="span" className="me-2" />}
+                {'Sign in'}
+              </MDBBtn>
             </form>
           </MDBTabsPane>
 
@@ -89,13 +96,25 @@ const Login = () => {
             <form onSubmit={handleSignUp}>
               <MDBInput
                 wrapperClass="mb-4"
-                label="Name"
+                label="First Name"
                 id="form1"
                 contrast
                 size="lg"
                 type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
+                required
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+              />
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Last Name"
+                id="form1"
+                contrast
+                size="lg"
+                type="text"
+                required
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
               />
               <MDBInput
                 wrapperClass="mb-4"
@@ -104,6 +123,7 @@ const Login = () => {
                 contrast
                 size="lg"
                 type="email"
+                required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
@@ -114,14 +134,19 @@ const Login = () => {
                 contrast
                 size="lg"
                 type="password"
+                required
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
 
-              <MDBBtn className="mb-4 w-100">{'Sign up'}</MDBBtn>
+              <MDBBtn className="mb-4 w-100">
+                {loading && <MDBSpinner size="sm" role="status" tag="span" className="me-2" />}
+                {'Sign up'}
+              </MDBBtn>
             </form>
           </MDBTabsPane>
         </MDBTabsContent>
+        <LoadingModal show={loading} />
       </MDBCard>
     </MDBContainer>
   );

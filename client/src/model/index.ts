@@ -1,10 +1,13 @@
+import {MessageType} from 'react-chat-elements';
+
 export interface User {
-  avatar: String;
-  date: String;
-  alt: String;
-  subtitle: String;
-  messages: String | any[];
-  name: String;
-  title: String;
+  userId: number;
+  avatar: string;
+  date: string | Date;
+  alt: string;
+  subtitle: string;
+  messages: MessageType[];
+  name?: string;
+  title: string;
   unread: any;
 }
