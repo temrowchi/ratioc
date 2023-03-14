@@ -26,8 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --config .prettierrc 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' --write",
-    "checkFormat": "prettier --config .prettierrc 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' --check",
-    "postinstall": "husky install"
+    "checkFormat": "prettier --config .prettierrc 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' --check"
   },
   "eslintConfig": {
     "extends": [
