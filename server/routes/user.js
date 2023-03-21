@@ -20,8 +20,12 @@ app.use(function(req, res, next) {
 });
 
 // Determine the different calls.
-app.get('/all', controller.allAccess);
-app.get('/board', auth.verifyToken, controller.userBoard);
+app.get('/board', controller.userBoard);
+app.get('/search/all', auth.verifyToken,controller.findAllUsers);
+app.get('/search/email/:email', auth.verifyToken, controller.findUserByEmail);
+app.get('/search/id/:id', auth.verifyToken, controller.findUserById);
+app.get('/search/name/:name', auth.verifyToken, controller.findByName);
+app.post('/addFriend', auth.verifyToken, controller.addFriend);
 
 const router = app;
 

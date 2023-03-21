@@ -1,3 +1,3 @@
 module.exports = {
-    secret: ""
+    secret: "ratioc-secret-key"
 };
