@@ -8,10 +8,19 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           allowNull: false
         },
+        completeName: {
+            type: Sequelize.STRING,
+          allowNull: false
+        },
         email: {
             type: Sequelize.STRING,
             unique: true,
             isEmail: true,
+            allowNull: false
+        },
+        userName: {
+            type: Sequelize.STRING,
+            unique: true,
             allowNull: false
         },
         password: {

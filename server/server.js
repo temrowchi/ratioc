@@ -3,7 +3,23 @@ const bodyParser = require('body-parser')
 const routes = require('./routes/index');
 
 const db = require("./models");
-db.sequelize.sync(); 
+//db.sequelize.sync(); 
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
+  initial();
+});
+
+function initial() {
+  db.role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  db.role.create({
+    id: 2,
+    name: "admin"
+  });
+}
 
 const app = express();
 const port = process.env.PORT || 8080;; 
